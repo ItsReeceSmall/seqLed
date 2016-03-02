@@ -2,13 +2,13 @@ import RPi.GPIO as gpio
 import time, os, sys
 
 gpio.setmode(gpio.BOARD)
-GPIO.setup(12, GPIO.IN)
+gpio.setup(12, GPIO.IN)
 
 ColourMode = ["w", "R", "G", "B", "Off"]
 Mode = 0
 
 while True:
-    if GPIO.input(12, LOW):
+    if gpio.input(12, LOW):
         time.sleep(1)
         print('on')
         time.sleep(1)
@@ -60,5 +60,5 @@ while True:
         pi2go.setLED(3, 0, 0, 4095)
         print('BLUE')
 
-GPIO.cleanup()
+gpio.cleanup()
 sys.exit()
