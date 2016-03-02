@@ -14,10 +14,10 @@ while True:
         Mode = (Mode + 1)
         if Mode > 4:
             Mode = 0
-        print "Current Mode is: " + ColourMode[Mode]
+        print ("Current Mode is: " + ColourMode[Mode])
         time.sleep(0.1)
     else:
-        print "Current mode is: " + ColourMode[Mode]
+        print ("Current mode is: " + ColourMode[Mode])
         time.sleep(0.1)
 
     if Mode == 0:
