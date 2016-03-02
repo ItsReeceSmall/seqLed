@@ -1,17 +1,14 @@
-import RPi.GPIO as GPIO
-import pi2go
+import RPi.GPIO as gpio
 import time, os, sys
 
-pi2go.init()
-print('Pi2Go version = ' + str(pi2go.version()))
-GPIO.setup(16, IN)
+gpio.setmode(gpio.BOARD)
+GPIO.setup(12, GPIO.IN)
 
 ColourMode = ["w", "R", "G", "B", "Off"]
 Mode = 0
-pi2go.setAllLEDs(0, 0, 0)
 
 while True:
-    if GPIO.input(16, LOW):
+    if GPIO.input(12, LOW):
         time.sleep(1)
         print('on')
         time.sleep(1)
