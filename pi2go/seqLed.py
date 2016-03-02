@@ -16,10 +16,10 @@ while True:
         if Mode > 4:
             Mode = 0
         print ("Current Mode is: " + ColourMode[Mode])
-        time.sleep(0.1)
+        time.sleep(1)
     else:
         print ("Current mode is: " + ColourMode[Mode])
-        time.sleep(0.1)
+        time.sleep(1)
 
     if Mode == 0:
         pi2go.setLED(0, 0, 0, 0)
