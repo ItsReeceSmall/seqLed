@@ -2,7 +2,7 @@ import RPi.GPIO as gpio
 import time, os, sys
 
 gpio.setmode(gpio.BOARD)
-gpio.setup(12, GPIO.IN)
+gpio.setup(12, gpio.IN)
 
 ColourMode = ["w", "R", "G", "B", "Off"]
 Mode = 0
