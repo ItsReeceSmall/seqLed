@@ -10,9 +10,11 @@ pi2go.setAllLEDs(0, 0, 0)
 
 while True:
     if pi2go.getSwitch() == True:
+        time.sleep(1)
         print('on')
         time.sleep(1)
     else:
+        time.sleep(1)
         print('off')
         time.sleep(1)
 
