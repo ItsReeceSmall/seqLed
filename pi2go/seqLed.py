@@ -1,6 +1,4 @@
-import RPi.GPIO as GPIO
 import pi2go
-import time, os, sys
 
 GPIO.setmode(GPIO.BOARD)
 pi2go.init()
