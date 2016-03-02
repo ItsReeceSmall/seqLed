@@ -9,6 +9,12 @@ Mode = 0
 pi2go.setAllLEDs(0, 0, 0)
 
 while True:
+    if pi2go.getSwitch() == True:
+        print('on')
+    else:
+        print('off')
+
+while True:
     changeColourMode = pi2go.getSwitch()
     if changeColourMode == True:
         Mode = (Mode + 1)
