@@ -3,7 +3,7 @@ import pi2go
 import time, os, sys
 
 pi2go.init()
-print('Pi2Go version = ' + pi2go.version())
+print('Pi2Go version = ' + str(pi2go.version()))
 
 ColourMode = ["w", "R", "G", "B", "Off"]
 Mode = 0
