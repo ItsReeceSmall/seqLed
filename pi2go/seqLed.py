@@ -4,13 +4,14 @@ import time, os, sys
 
 pi2go.init()
 print('Pi2Go version = ' + str(pi2go.version()))
+GPIO.setup(16, IN)
 
 ColourMode = ["w", "R", "G", "B", "Off"]
 Mode = 0
 pi2go.setAllLEDs(0, 0, 0)
 
 while True:
-    if pi2go.getSwitch() == True:
+    if GPIO.input(16, LOW):
         time.sleep(1)
         print('on')
         time.sleep(1)
