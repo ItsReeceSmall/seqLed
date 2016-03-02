@@ -2,7 +2,7 @@ import RPi.GPIO as gpio
 import pi2go
 import time, os, sys
 
-pi2go.init()
+#pi2go.init()
 
 ColourMode = ["w", "R", "G", "B", "Off"]
 Mode = 0
