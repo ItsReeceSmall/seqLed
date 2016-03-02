@@ -8,7 +8,7 @@ ColourMode = ["w", "R", "G", "B", "Off"]
 Mode = 0
 
 while True:
-    if gpio.input(12) = False:
+    if gpio.input(12) == False:
         time.sleep(1)
         print('on')
         time.sleep(1)
