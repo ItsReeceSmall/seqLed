@@ -29,10 +29,10 @@ while True:
         if Mode > 4:
             Mode = 0
         print ("Current Mode is: " + ColourMode[Mode])
-        time.sleep(1)
+        time.sleep(0.5)
     else:
         print ("Current mode is: " + ColourMode[Mode])
-        time.sleep(1)
+        time.sleep(0.5)
 
     if Mode == 0:
         print('OFF')
@@ -41,6 +41,9 @@ while True:
         b.ChangeDutyCycle(0)
     elif Mode == 1:
         print('WHITE')
+        r.ChangeDutyCycle(100)
+        g.ChangeDutyCycle(100)
+        b.ChangeDutyCycle(100)
     elif Mode == 2:
         print('RED')
         r.ChangeDutyCycle(0)
