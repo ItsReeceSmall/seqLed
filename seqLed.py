@@ -1,56 +1,63 @@
-import RPi.GPIO as GPIO
-import pi2go
+import RPi.GPIO as gpio
 import time, os, sys
 
-GPIO.setmode(GPIO.BOARD)
-pi2go.init()
+gpio.setmode(gpio.BOARD)
+gpio.setup(12, gpio.IN, pull_up_down=gpio.PUD_UP)
 
-ColourMode = ["w", "R", "G", "B", "Off"]
+R = 11
+G = 13
+B = 15
+lights = [R,G,B]
+
+for pin in lights:
+    gpio.setup(pin, gpio.OUT)
+
+ColourMode = ["Off", "White", "Red", "Green", "Blue"]
 Mode = 0
-pi2go.setAllLEDs(0, 0, 0)
+
+r = gpio.PWM(R,100)
+r.start(0)
+g = gpio.PWM(G,100)
+g.start(0)
+b = gpio.PWM(B,100)
+b.start(0)
 
 while True:
-    changeColourMode = pi2go.getSwitch()
-    if changeColourMode == True:
+    changeColourMode = gpio.input(12)
+    if changeColourMode == False:
         Mode = (Mode + 1)
         if Mode > 4:
             Mode = 0
         print ("Current Mode is: " + ColourMode[Mode])
-        time.sleep(0.1)
+        time.sleep(0.2)
     else:
-        print ("Current mode is: " + ColourMode[Mode])
-        time.sleep(0.1)
+        #print ("Current mode is: " + ColourMode[Mode])
+        time.sleep(0.2)
 
     if Mode == 0:
-        pi2go.setLED(0, 0, 0, 0)
-        pi2go.setLED(1, 0, 0, 0)
-        pi2go.setLED(2, 0, 0, 0)
-        pi2go.setLED(3, 0, 0, 0)
-        print('OFF')
+        #print('OFF')
+        r.ChangeDutyCycle(0)
+        g.ChangeDutyCycle(0) #Off
+        b.ChangeDutyCycle(0)
     elif Mode == 1:
-        pi2go.setLED(0, 4095, 4095, 4095)
-        pi2go.setLED(1, 4095, 4095, 4095)
-        pi2go.setLED(2, 4095, 4095, 4095)
-        pi2go.setLED(3, 4095, 4095, 4095)
-        print('WHITE')
+        #print('WHITE')
+        r.ChangeDutyCycle(100)
+        g.ChangeDutyCycle(60) #White
+        b.ChangeDutyCycle(60)
     elif Mode == 2:
-        pi2go.setLED(0, 4095, 0, 0)
-        pi2go.setLED(1, 4095, 0, 0)
-        pi2go.setLED(2, 4095, 0, 0)
-        pi2go.setLED(3, 4095, 0, 0)
-        print('RED')
+        #print('RED')
+        r.ChangeDutyCycle(0)
+        g.ChangeDutyCycle(0) #Red
+        b.ChangeDutyCycle(0)
+        r.ChangeDutyCycle(100)
     elif Mode == 3:
-        pi2go.setLED(0, 0, 4095, 0)
-        pi2go.setLED(1, 0, 4095, 0)
-        pi2go.setLED(2, 0, 4095, 0)
-        pi2go.setLED(3, 0, 4095, 0)
-        print('GREEN')
+        #print('GREEN')
+        r.ChangeDutyCycle(0) #Green
+        g.ChangeDutyCycle(100)
     elif Mode == 4:
-        pi2go.setLED(0, 0, 0, 4095)
-        pi2go.setLED(1, 0, 0, 4095)
-        pi2go.setLED(2, 0, 0, 4095)
-        pi2go.setLED(3, 0, 0, 4095)
-        print('BLUE')
+        #print('BLUE')
+        g.ChangeDutyCycle(0) #Blue
+        b.ChangeDutyCycle(100)
 
-GPIO.cleanup()
+gpio.cleanup()
 sys.exit()
