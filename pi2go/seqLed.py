@@ -10,11 +10,8 @@ B = 15
 lights = [R,G,B]
 count = 0
 
-while add == True:
-    gpio.setup(lights(count), gpio.OUT)
-    count = (count + 1)
-    if count > 2:
-        add = False
+for pin in lights:
+    gpio.setup(pin, gpio.OUT)
 
 ColourMode = ["Off", "w", "R", "G", "B"]
 Mode = 0
