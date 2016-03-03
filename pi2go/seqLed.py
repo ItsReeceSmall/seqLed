@@ -10,7 +10,7 @@ B = 15
 lights = [R,G,B]
 count = 0
 
-while add = True:
+while add == True:
     gpio.setup(lights(count), gpio.OUT)
     count = (count + 1)
     if count > 2:
