@@ -30,34 +30,34 @@ while True:
         if Mode > 4:
             Mode = 0
         print ("Current Mode is: " + ColourMode[Mode])
-        time.sleep(0.05)
+        time.sleep(0.2)
     else:
         #print ("Current mode is: " + ColourMode[Mode])
-        time.sleep(0.05)
+        time.sleep(0.2)
 
     if Mode == 0:
-        print('OFF')
+        #print('OFF')
         r.ChangeDutyCycle(0)
-        g.ChangeDutyCycle(0)
+        g.ChangeDutyCycle(0) #Off
         b.ChangeDutyCycle(0)
     elif Mode == 1:
-        print('WHITE')
+        #print('WHITE')
         r.ChangeDutyCycle(100)
-        g.ChangeDutyCycle(60)
+        g.ChangeDutyCycle(60) #White
         b.ChangeDutyCycle(60)
     elif Mode == 2:
-        print('RED')
+        #print('RED')
         r.ChangeDutyCycle(0)
-        g.ChangeDutyCycle(0)
+        g.ChangeDutyCycle(0) #Red
         b.ChangeDutyCycle(0)
         r.ChangeDutyCycle(100)
     elif Mode == 3:
-        print('GREEN')
-        r.ChangeDutyCycle(0)
+        #print('GREEN')
+        r.ChangeDutyCycle(0) #Green
         g.ChangeDutyCycle(100)
     elif Mode == 4:
-        print('BLUE')
-        g.ChangeDutyCycle(0)
+        #print('BLUE')
+        g.ChangeDutyCycle(0) #Blue
         b.ChangeDutyCycle(100)
 
 gpio.cleanup()
