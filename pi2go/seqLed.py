@@ -8,7 +8,6 @@ R = 11
 G = 13
 B = 15
 lights = [R,G,B]
-count = 0
 
 for pin in lights:
     gpio.setup(pin, gpio.OUT)
