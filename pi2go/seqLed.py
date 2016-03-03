@@ -15,18 +15,15 @@ for pin in lights:
 ColourMode = ["w", "R", "G", "B", "Off"]
 Mode = 0
 
-while True:
-    if gpio.input(12) == False:
-        time.sleep(1)
-        print('on')
-        time.sleep(1)
-    else:
-        time.sleep(1)
-        print('off')
-        time.sleep(1)
+r = gpio.PWM(R,100)
+r.start(0)
+g = gpio.PWM(G,100)
+g.start(0)
+b = gpio.PWM(B,100)
+b.start(0)
 
 while True:
-    changeColourMode = pi2go.getSwitch()
+    changeColourMode = gpio.input(12)
     if changeColourMode == True:
         Mode = (Mode + 1)
         if Mode > 4:
@@ -39,14 +36,25 @@ while True:
 
     if Mode == 0:
         print('OFF')
+        r.ChangeDutyCycle(0)
+        g.ChangeDutyCycle(0)
+        b.ChangeDutyCycle(0)
     elif Mode == 1:
         print('WHITE')
     elif Mode == 2:
         print('RED')
+        r.ChangeDutyCycle(0)
+        g.ChangeDutyCycle(0)
+        b.ChangeDutyCycle(0)
+        r.ChangeDutyCycle(100)
     elif Mode == 3:
         print('GREEN')
+        r.ChangeDutyCycle(0)
+        g.ChangeDutyCycle(100)
     elif Mode == 4:
         print('BLUE')
+        g.ChangeDutyCycle(0)
+        b.ChangeDutyCycle(100)
 
 gpio.cleanup()
 sys.exit()
