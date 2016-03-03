@@ -12,7 +12,7 @@ lights = [R,G,B]
 for pin in lights:
     gpio.setup(pin, gpio.OUT)
 
-ColourMode = ["Off", "w", "R", "G", "B"]
+ColourMode = ["Off", "White", "Red", "Green", "Blue"]
 Mode = 0
 
 r = gpio.PWM(R,100)
