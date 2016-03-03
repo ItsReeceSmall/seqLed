@@ -39,7 +39,7 @@ while True:
 
     if Mode == 0:
         print('OFF')
-    elif Mode == 1:)
+    elif Mode == 1:
         print('WHITE')
     elif Mode == 2:
         print('RED')
