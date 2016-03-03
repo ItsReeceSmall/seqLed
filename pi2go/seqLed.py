@@ -2,7 +2,15 @@ import RPi.GPIO as gpio
 import time, os, sys
 
 gpio.setmode(gpio.BOARD)
-gpio.setup(12, gpio.IN)
+gpio.setup(12, gpio.IN, pull_up_down=gpio.PUD_UP)
+
+R = 11
+G = 13
+B = 15
+lights = [R,G,B]
+
+for pin in lights:
+    gpio.setup(pin, gpio.OUT)
 
 ColourMode = ["w", "R", "G", "B", "Off"]
 Mode = 0
@@ -30,34 +38,14 @@ while True:
         time.sleep(1)
 
     if Mode == 0:
-        pi2go.setLED(0, 0, 0, 0)
-        pi2go.setLED(1, 0, 0, 0)
-        pi2go.setLED(2, 0, 0, 0)
-        pi2go.setLED(3, 0, 0, 0)
         print('OFF')
-    elif Mode == 1:
-        pi2go.setLED(0, 4095, 4095, 4095)
-        pi2go.setLED(1, 4095, 4095, 4095)
-        pi2go.setLED(2, 4095, 4095, 4095)
-        pi2go.setLED(3, 4095, 4095, 4095)
+    elif Mode == 1:)
         print('WHITE')
     elif Mode == 2:
-        pi2go.setLED(0, 4095, 0, 0)
-        pi2go.setLED(1, 4095, 0, 0)
-        pi2go.setLED(2, 4095, 0, 0)
-        pi2go.setLED(3, 4095, 0, 0)
         print('RED')
     elif Mode == 3:
-        pi2go.setLED(0, 0, 4095, 0)
-        pi2go.setLED(1, 0, 4095, 0)
-        pi2go.setLED(2, 0, 4095, 0)
-        pi2go.setLED(3, 0, 4095, 0)
         print('GREEN')
     elif Mode == 4:
-        pi2go.setLED(0, 0, 0, 4095)
-        pi2go.setLED(1, 0, 0, 4095)
-        pi2go.setLED(2, 0, 0, 4095)
-        pi2go.setLED(3, 0, 0, 4095)
         print('BLUE')
 
 gpio.cleanup()
