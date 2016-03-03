@@ -8,11 +8,15 @@ R = 11
 G = 13
 B = 15
 lights = [R,G,B]
+count = 0
 
-for pin in lights:
-    gpio.setup(pin, gpio.OUT)
+while add = True:
+    gpio.setup(lights(count), gpio.OUT)
+    count = (count + 1)
+    if count > 2:
+        add = False
 
-ColourMode = ["w", "R", "G", "B", "Off"]
+ColourMode = ["Off", "w", "R", "G", "B"]
 Mode = 0
 
 r = gpio.PWM(R,100)
@@ -29,10 +33,10 @@ while True:
         if Mode > 4:
             Mode = 0
         print ("Current Mode is: " + ColourMode[Mode])
-        time.sleep(0.5)
+        time.sleep(0.05)
     else:
-        print ("Current mode is: " + ColourMode[Mode])
-        time.sleep(0.5)
+        #print ("Current mode is: " + ColourMode[Mode])
+        time.sleep(0.05)
 
     if Mode == 0:
         print('OFF')
@@ -42,8 +46,8 @@ while True:
     elif Mode == 1:
         print('WHITE')
         r.ChangeDutyCycle(100)
-        g.ChangeDutyCycle(100)
-        b.ChangeDutyCycle(100)
+        g.ChangeDutyCycle(60)
+        b.ChangeDutyCycle(60)
     elif Mode == 2:
         print('RED')
         r.ChangeDutyCycle(0)
