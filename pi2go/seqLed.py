@@ -24,7 +24,7 @@ b.start(0)
 
 while True:
     changeColourMode = gpio.input(12)
-    if changeColourMode == True:
+    if changeColourMode == False:
         Mode = (Mode + 1)
         if Mode > 4:
             Mode = 0
